@@ -147,19 +147,19 @@ func SetTxn(stxn *SignedTxn) error
 </code></pre>
 <p><code>GetTxn(txnHash)</code>根据交易的哈希值获取交易数据<br />
 <code>SetTxn(stxn)</code>把交易数据存入区块库（以交易哈希为索引）</p>
-<hr />
+<h2 id=""><a class="header" href="#"></a></h2>
 <pre><code class="language-go">func GetTxns(blockHash Hash) ([]*SignedTxn, error)
 func SetTxns(blockHash Hash, txns []*SignedTxn) error
 </code></pre>
 <p><code>GetTxns(blockHash)</code>根据 区块哈希 获取该区块中的所有 交易数据<br />
 <code>SetTxns(blockHash, txns)</code>把一个区块中的所有交易数据存入区块库中（以交易哈希为索引）</p>
-<hr />
+<h2 id="-1"><a class="header" href="#-1"></a></h2>
 <pre><code class="language-go">func GetEvents(blockHash Hash) ([]*Event, error)
 func SetEvents(events []*Event) error
 </code></pre>
 <p><code>GetEvents(blockHash)</code>根据 区块哈希 获取该区块中所有的 <code>event</code><br />
 <code>SetEvents(events）</code>把所有<code>event</code>存入区块库中（以自增ID为索引）</p>
-<hr />
+<h2 id="-2"><a class="header" href="#-2"></a></h2>
 <pre><code class="language-go">func GetErrors(blockHash Hash) ([]*Error, error)
 func SetError(err *Error) error
 </code></pre>

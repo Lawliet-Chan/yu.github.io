@@ -155,6 +155,7 @@ func Name() string
 <p><code>GetTripodMeta()</code>返回一个<code>tripod</code>的元数据，该元数据定义在<a href="https://github.com/Lawliet-Chan/yu/blob/master/tripod/tripod_meta.go#L11">这里。</a>
 该元数据中囊括了 <code>Execution</code> 和 <code>Query</code>列表。<br />
 <code>Name()</code>返回<code>tripod</code>的名称。</p>
+<h2 id=""><a class="header" href="#"></a></h2>
 <pre><code class="language-go">func CheckTxn(*SignedTxn) error
 func VerifyBlock(block IBlock, env *ChainEnv) bool
 </code></pre>
@@ -162,6 +163,7 @@ func VerifyBlock(block IBlock, env *ChainEnv) bool
 而<code>TripodsCheck</code>便是在这里定义，每个<code>tripod</code>都可以定义自己的交易检查逻辑。<br />
 <code>VerifyBlock()</code>是开发者自定义的区块校验逻辑，区块链每收到一个外部广播来的区块都需要校验过后才能进行后续处理，不同的链有对区块不同的校验方式，所以 
 开发者可以自己定制校验逻辑。 每个<code>tripod</code>都可以定义自己的交易检查逻辑。</p>
+<h2 id="-1"><a class="header" href="#-1"></a></h2>
 <pre><code class="language-go">func InitChain(env *ChainEnv, land *Land) error
 func StartBlock(block IBlock, env *ChainEnv, land *Land) (needBroadcast bool, err error)
 func EndBlock(block IBlock, env *ChainEnv, land *Land) error

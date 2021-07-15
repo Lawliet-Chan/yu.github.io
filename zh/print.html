@@ -254,12 +254,12 @@ func main() {
 最长子链(Longest)： 最长的那条分支会被认为是主链，该方式会被回滚。<br />
 最重子链(Heaviest): 子链数量最多的分叉会被认为是主链， 该方式会被回滚。<br />
 敲定(Finalize): 通过投票等方式对区块或者链进行投票 来最终敲定某个分叉成为主链，正常情况下被敲定的区块无法被回滚。</p>
-<hr />
+<h2 id=""><a class="header" href="#"></a></h2>
 <pre><code class="language-go">func GetGenesis() (IBlock, error)
 func SetGenesis(b IBlock) error
 </code></pre>
 <p>从链内获取创世区块，把创世区块存入链。</p>
-<hr />
+<h2 id="-1"><a class="header" href="#-1"></a></h2>
 <pre><code class="language-go">func InsertBlockFromP2P(ib IBlock) error
 func TakeP2pBlocksBefore(height BlockNum) (map[BlockNum][]IBlock, error)
 func TakeP2pBlocks(height BlockNum) ([]IBlock, error)
@@ -267,7 +267,7 @@ func TakeP2pBlocks(height BlockNum) ([]IBlock, error)
 <p><code>InsertBlockFromP2P(block)</code>将从P2P网络收到的经过验证的区块纳入一个缓存区，以备后续处理。<br />
 <code>TakeP2pBlocksBefore(height)</code>将从上述缓存区取走高度 &lt; <code>height</code>的所有区块。<br />
 <code>TakeP2pBlocks(height)</code>将从上述缓存区取走高度 = <code>height</code>的所有区块。</p>
-<hr />
+<h2 id="-2"><a class="header" href="#-2"></a></h2>
 <pre><code class="language-go">func AppendBlock(b IBlock) error
 func GetBlock(blockHash Hash) (IBlock, error)
 func UpdateBlock(b IBlock) error
@@ -275,7 +275,7 @@ func UpdateBlock(b IBlock) error
 <p><code>AppendBlock(block)</code>将区块加入到链的末尾<br />
 <code>GetBlock(blockHash)</code>根据区块哈希获取具体的区块<br />
 <code>UpdateBlock(block)</code>以区块哈希为索引更新区块数据</p>
-<hr />
+<h2 id="-3"><a class="header" href="#-3"></a></h2>
 <pre><code class="language-go">func Children(prevBlockHash Hash) ([]IBlock, error)  
 func Finalize(blockHash Hash) error  
 func Chain() (IChainStruct, error)
@@ -293,19 +293,19 @@ func SetTxn(stxn *SignedTxn) error
 </code></pre>
 <p><code>GetTxn(txnHash)</code>根据交易的哈希值获取交易数据<br />
 <code>SetTxn(stxn)</code>把交易数据存入区块库（以交易哈希为索引）</p>
-<hr />
+<h2 id="-4"><a class="header" href="#-4"></a></h2>
 <pre><code class="language-go">func GetTxns(blockHash Hash) ([]*SignedTxn, error)
 func SetTxns(blockHash Hash, txns []*SignedTxn) error
 </code></pre>
 <p><code>GetTxns(blockHash)</code>根据 区块哈希 获取该区块中的所有 交易数据<br />
 <code>SetTxns(blockHash, txns)</code>把一个区块中的所有交易数据存入区块库中（以交易哈希为索引）</p>
-<hr />
+<h2 id="-5"><a class="header" href="#-5"></a></h2>
 <pre><code class="language-go">func GetEvents(blockHash Hash) ([]*Event, error)
 func SetEvents(events []*Event) error
 </code></pre>
 <p><code>GetEvents(blockHash)</code>根据 区块哈希 获取该区块中所有的 <code>event</code><br />
 <code>SetEvents(events）</code>把所有<code>event</code>存入区块库中（以自增ID为索引）</p>
-<hr />
+<h2 id="-6"><a class="header" href="#-6"></a></h2>
 <pre><code class="language-go">func GetErrors(blockHash Hash) ([]*Error, error)
 func SetError(err *Error) error
 </code></pre>
@@ -323,17 +323,17 @@ func NecessaryCheck(stxn *SignedTxn) error
 <code>TripodsCheck()</code> 基础检查完毕之后，会进行tripods检查，此为开发者自行定义的交易检查规则。<br />
 <code>NecessaryCheck()</code>表示必要性检查，只检查交易数据是否过大、签名是否合法以及 tripods检查。 在节点收到来自P2P网络的区块之后，同步
 区块中的交易数据时做该检查，检查后直接存入<code>blockbase</code>。</p>
-<hr />
+<h2 id="-7"><a class="header" href="#-7"></a></h2>
 <pre><code class="language-go">func Insert(txn *SignedTxn) error
 </code></pre>
 <p><code>Insert()</code>表示插入交易数据到交易池， 该功能内部带有 <code>BaseCheck</code> 和 <code>TripodsCheck</code>两类检查， 只有通过检查才会被真正插入交易池，否则会返回错误。</p>
-<hr />
+<h2 id="-8"><a class="header" href="#-8"></a></h2>
 <pre><code class="language-go">func Pack(numLimit uint64) ([]*SignedTxn, error)
 func PackFor(numLimit uint64, filter func(*SignedTxn) error) ([]*SignedTxn, error)
 </code></pre>
 <p><code>Pack(numLimit)</code>表示从交易池最多打包<code>numLimit</code>个交易，被打包的交易会被标记， 但是不会立马从交易池中删除。<br />
 <code>PackFor(numLimit, filter)</code> 比 <code>Pack</code>多一个过滤功能，所有被打包的交易必须通过<code>filter</code>的过滤，如果<code>filter</code>返回一个错误，则该交易不会被打包。</p>
-<hr />
+<h2 id="-9"><a class="header" href="#-9"></a></h2>
 <pre><code class="language-go">func GetTxn(hash Hash) (*SignedTxn, error)
 func Flush() error
 </code></pre>
@@ -357,6 +357,7 @@ func Name() string
 <p><code>GetTripodMeta()</code>返回一个<code>tripod</code>的元数据，该元数据定义在<a href="https://github.com/Lawliet-Chan/yu/blob/master/tripod/tripod_meta.go#L11">这里。</a>
 该元数据中囊括了 <code>Execution</code> 和 <code>Query</code>列表。<br />
 <code>Name()</code>返回<code>tripod</code>的名称。</p>
+<h2 id="-10"><a class="header" href="#-10"></a></h2>
 <pre><code class="language-go">func CheckTxn(*SignedTxn) error
 func VerifyBlock(block IBlock, env *ChainEnv) bool
 </code></pre>
@@ -364,6 +365,7 @@ func VerifyBlock(block IBlock, env *ChainEnv) bool
 而<code>TripodsCheck</code>便是在这里定义，每个<code>tripod</code>都可以定义自己的交易检查逻辑。<br />
 <code>VerifyBlock()</code>是开发者自定义的区块校验逻辑，区块链每收到一个外部广播来的区块都需要校验过后才能进行后续处理，不同的链有对区块不同的校验方式，所以 
 开发者可以自己定制校验逻辑。 每个<code>tripod</code>都可以定义自己的交易检查逻辑。</p>
+<h2 id="-11"><a class="header" href="#-11"></a></h2>
 <pre><code class="language-go">func InitChain(env *ChainEnv, land *Land) error
 func StartBlock(block IBlock, env *ChainEnv, land *Land) (needBroadcast bool, err error)
 func EndBlock(block IBlock, env *ChainEnv, land *Land) error

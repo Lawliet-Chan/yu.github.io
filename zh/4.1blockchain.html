@@ -150,12 +150,12 @@
 最长子链(Longest)： 最长的那条分支会被认为是主链，该方式会被回滚。<br />
 最重子链(Heaviest): 子链数量最多的分叉会被认为是主链， 该方式会被回滚。<br />
 敲定(Finalize): 通过投票等方式对区块或者链进行投票 来最终敲定某个分叉成为主链，正常情况下被敲定的区块无法被回滚。</p>
-<hr />
+<h2 id=""><a class="header" href="#"></a></h2>
 <pre><code class="language-go">func GetGenesis() (IBlock, error)
 func SetGenesis(b IBlock) error
 </code></pre>
 <p>从链内获取创世区块，把创世区块存入链。</p>
-<hr />
+<h2 id="-1"><a class="header" href="#-1"></a></h2>
 <pre><code class="language-go">func InsertBlockFromP2P(ib IBlock) error
 func TakeP2pBlocksBefore(height BlockNum) (map[BlockNum][]IBlock, error)
 func TakeP2pBlocks(height BlockNum) ([]IBlock, error)
@@ -163,7 +163,7 @@ func TakeP2pBlocks(height BlockNum) ([]IBlock, error)
 <p><code>InsertBlockFromP2P(block)</code>将从P2P网络收到的经过验证的区块纳入一个缓存区，以备后续处理。<br />
 <code>TakeP2pBlocksBefore(height)</code>将从上述缓存区取走高度 &lt; <code>height</code>的所有区块。<br />
 <code>TakeP2pBlocks(height)</code>将从上述缓存区取走高度 = <code>height</code>的所有区块。</p>
-<hr />
+<h2 id="-2"><a class="header" href="#-2"></a></h2>
 <pre><code class="language-go">func AppendBlock(b IBlock) error
 func GetBlock(blockHash Hash) (IBlock, error)
 func UpdateBlock(b IBlock) error
@@ -171,7 +171,7 @@ func UpdateBlock(b IBlock) error
 <p><code>AppendBlock(block)</code>将区块加入到链的末尾<br />
 <code>GetBlock(blockHash)</code>根据区块哈希获取具体的区块<br />
 <code>UpdateBlock(block)</code>以区块哈希为索引更新区块数据</p>
-<hr />
+<h2 id="-3"><a class="header" href="#-3"></a></h2>
 <pre><code class="language-go">func Children(prevBlockHash Hash) ([]IBlock, error)  
 func Finalize(blockHash Hash) error  
 func Chain() (IChainStruct, error)
