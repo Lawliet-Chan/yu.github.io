@@ -140,7 +140,7 @@
                         <h1 id="交易池"><a class="header" href="#交易池">交易池</a></h1>
 <p>接口代码定义在<a href="https://github.com/Lawliet-Chan/yu/blob/master/txpool/txpool.go">这里</a><br />
 以下为核心功能的接口，开发者如有需求，可自行定制属于自己的交易池</p>
-<pre><code>func BaseCheck(*SignedTxn) error
+<pre><code class="language-go">func BaseCheck(*SignedTxn) error
 func TripodsCheck(stxn *SignedTxn) error
 func NecessaryCheck(stxn *SignedTxn) error
 </code></pre>
@@ -150,17 +150,17 @@ func NecessaryCheck(stxn *SignedTxn) error
 <code>NecessaryCheck()</code>表示必要性检查，只检查交易数据是否过大、签名是否合法以及 tripods检查。 在节点收到来自P2P网络的区块之后，同步
 区块中的交易数据时做该检查，检查后直接存入<code>blockbase</code>。</p>
 <hr />
-<pre><code>func Insert(txn *SignedTxn) error
+<pre><code class="language-go">func Insert(txn *SignedTxn) error
 </code></pre>
 <p><code>Insert()</code>表示插入交易数据到交易池， 该功能内部带有 <code>BaseCheck</code> 和 <code>TripodsCheck</code>两类检查， 只有通过检查才会被真正插入交易池，否则会返回错误。</p>
 <hr />
-<pre><code>func Pack(numLimit uint64) ([]*SignedTxn, error)
+<pre><code class="language-go">func Pack(numLimit uint64) ([]*SignedTxn, error)
 func PackFor(numLimit uint64, filter func(*SignedTxn) error) ([]*SignedTxn, error)
 </code></pre>
 <p><code>Pack(numLimit)</code>表示从交易池最多打包<code>numLimit</code>个交易，被打包的交易会被标记， 但是不会立马从交易池中删除。<br />
 <code>PackFor(numLimit, filter)</code> 比 <code>Pack</code>多一个过滤功能，所有被打包的交易必须通过<code>filter</code>的过滤，如果<code>filter</code>返回一个错误，则该交易不会被打包。</p>
 <hr />
-<pre><code>func GetTxn(hash Hash) (*SignedTxn, error)
+<pre><code class="language-go">func GetTxn(hash Hash) (*SignedTxn, error)
 func Flush() error
 </code></pre>
 <p><code>GetTxn(hash)</code> 根据交易哈希值 获取交易数据。<br />
@@ -192,20 +192,6 @@ func Flush() error
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>

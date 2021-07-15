@@ -142,25 +142,25 @@
 <h3 id="接口"><a class="header" href="#接口">接口</a></h3>
 <p>代码在<a href="https://github.com/Lawliet-Chan/yu/blob/master/blockchain/interfaces.go#L93">这里</a><br />
 以下为核心功能的接口，开发者如有需求，可自行定制属于自己的区块库。</p>
-<pre><code>func GetTxn(txnHash Hash) (*SignedTxn, error)
+<pre><code class="language-go">func GetTxn(txnHash Hash) (*SignedTxn, error)
 func SetTxn(stxn *SignedTxn) error
 </code></pre>
 <p><code>GetTxn(txnHash)</code>根据交易的哈希值获取交易数据<br />
 <code>SetTxn(stxn)</code>把交易数据存入区块库（以交易哈希为索引）</p>
 <hr />
-<pre><code>func GetTxns(blockHash Hash) ([]*SignedTxn, error)
+<pre><code class="language-go">func GetTxns(blockHash Hash) ([]*SignedTxn, error)
 func SetTxns(blockHash Hash, txns []*SignedTxn) error
 </code></pre>
 <p><code>GetTxns(blockHash)</code>根据 区块哈希 获取该区块中的所有 交易数据<br />
 <code>SetTxns(blockHash, txns)</code>把一个区块中的所有交易数据存入区块库中（以交易哈希为索引）</p>
 <hr />
-<pre><code>func GetEvents(blockHash Hash) ([]*Event, error)
+<pre><code class="language-go">func GetEvents(blockHash Hash) ([]*Event, error)
 func SetEvents(events []*Event) error
 </code></pre>
 <p><code>GetEvents(blockHash)</code>根据 区块哈希 获取该区块中所有的 <code>event</code><br />
 <code>SetEvents(events）</code>把所有<code>event</code>存入区块库中（以自增ID为索引）</p>
 <hr />
-<pre><code>func GetErrors(blockHash Hash) ([]*Error, error)
+<pre><code class="language-go">func GetErrors(blockHash Hash) ([]*Error, error)
 func SetError(err *Error) error
 </code></pre>
 <p><code>GetErrors(blockHash)</code>根据 区块哈希 获取该区块中所有的 <code>error</code><br />
@@ -192,20 +192,6 @@ func SetError(err *Error) error
 
         </div>
 
-        <!-- Livereload script (if served using the cli tool) -->
-        <script type="text/javascript">
-            var socket = new WebSocket("ws://localhost:3000/__livereload");
-            socket.onmessage = function (event) {
-                if (event.data === "reload") {
-                    socket.close();
-                    location.reload();
-                }
-            };
-
-            window.onbeforeunload = function() {
-                socket.close();
-            }
-        </script>
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
