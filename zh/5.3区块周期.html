@@ -160,6 +160,8 @@
     // 获取主链中的上一个区块，来确认本次区块的高度等等数据。
     prevBlock, err := chain.GetEndBlock()
 
+    ......
+
     // 从P2P网络中获取该区块高度上的合法区块（来自其他节点），如果有则表示该高度的区块已经被别的节点挖到，直接返回。
     pbsht, err := chain.TakeP2pBlocks(height)
     if err != nil {
