@@ -170,7 +170,7 @@ func EndBlock(block IBlock, env *ChainEnv, land *Land) error
 func FinalizeBlock(block IBlock, env *ChainEnv, land *Land) error
 </code></pre>
 <p><code>InitChain()</code>只会在区块链启动的时候被调用一次，专门用来定义处理<code>创世区块</code>。<br />
-<code>StartBlock()</code>定义区块生成时的阶段的逻辑，并且需要返回一个bool告诉框架是否要广播区块。一般如果是本地挖到的区块，是需要广播出去的，如果是从其他节点
+<code>StartBlock()</code>定义区块生成时的阶段的逻辑，并且需要返回一个类型为<code>bool</code>的<code>needBroadcast</code>返回值   告诉框架是否需要广播区块。一般如果是本地挖到的区块，是需要广播出去的，如果是从其他节点
 获取到的区块，则没必要广播。<br />
 <code>EndBlock()</code>定义区块结束时候的逻辑，一般会在这里执行交易并且将区块存入区块链中。<br />
 <code>FinalizeBlock()</code>定义区块的<code>敲定阶段</code>（即最终共识）的逻辑。如果区块链是<code>finalize类型的链</code>，则需要定制这部分逻辑，否则便不必要。</p>

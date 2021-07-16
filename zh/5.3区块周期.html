@@ -138,6 +138,102 @@
                 <div id="content" class="content">
                     <main>
                         <h1 id="区块周期"><a class="header" href="#区块周期">区块周期</a></h1>
+<p><a href="4.4tripod.html">前面</a> 有详细介绍过 <code>tripod</code>内关于区块周期的概念。 通过定制区块周期，我们可以实现很多深度的功能， 比如共识算法。 下面我们以
+基于sha256算法的 pow共识 为例，代码原址<a href="https://github.com/Lawliet-Chan/yu/blob/master/apps/pow/pow.go">在这里</a> 。</p>
+<ul>
+<li>初始化区块链，构造创世区块</li>
+</ul>
+<pre><code class="language-go">    func (*Pow) InitChain(env *ChainEnv, _ *Land) error {
+    	chain := env.Chain
+    	gensisBlock := &amp;Block{
+    		Header: &amp;Header{},
+    	}
+    	return chain.SetGenesis(gensisBlock)
+    }
+</code></pre>
+<ul>
+<li>区块开始时，构造区块</li>
+</ul>
+<pre><code class="language-go">func (p *Pow) StartBlock(block IBlock, env *ChainEnv, _ *Land) (needBroadcast bool, err error) {
+    ......
+
+    // 获取主链中的上一个区块，来确认本次区块的高度等等数据。
+    prevBlock, err := chain.GetEndBlock()
+
+    // 从P2P网络中获取该区块高度上的合法区块（来自其他节点），如果有则表示该高度的区块已经被别的节点挖到，直接返回。
+    pbsht, err := chain.TakeP2pBlocks(height)
+    if err != nil {
+   	logrus.Errorf(&quot;get p2p-blocks error: %s&quot;, err.Error())
+    }
+    if len(pbsht) &gt; 0 {
+   	block.CopyFrom(pbsht[0])
+   	logrus.Infof(&quot;USE P2P block(%s)&quot;, block.GetHash().String())
+   	env.StartBlock(block.GetHash())
+   	return
+    }
+    
+    // 如果从P2P网络中发现该区块高度上没有合法的区块， 则需要我们开始挖矿。
+    // 所以这里把 needBroadcast置为true，表示我们会挖到这个区块并将它广播到P2P网络中去，
+    // 具体的广播实现由框架帮我们去代劳了。
+    needBroadcast = true
+
+    ......
+
+    // 从交易池打包交易（最多打包pkgTxnsLimit个)
+    txns, err := pool.Pack(p.pkgTxnsLimit)
+    if err != nil {
+    	return
+    }
+
+    ......
+
+    // 为该区块计算出了一个合法的哈希值（即挖到矿了）
+    nonce, hash, err := spow.Run(block, p.target, p.targetBits)
+    if err != nil {
+        return
+    }
+
+    block.(*Block).SetNonce(uint64(nonce))
+    block.SetHash(hash)
+
+    ......
+
+    return 
+}
+</code></pre>
+<ul>
+<li>区块结束时</li>
+</ul>
+<pre><code class="language-go">func (*Pow) EndBlock(block IBlock, env *ChainEnv, land *Land) error {
+        ......
+
+        // 执行区块中的所有交易
+	err := node.ExecuteTxns(block, env, land)
+	if err != nil {
+		return err
+	}
+
+        // 把该区块持久化存入链中
+	err = chain.AppendBlock(block)
+	if err != nil {
+		return err
+	}
+
+        ......
+        // 清除交易池，为下一个区块的交易准备  
+        return pool.Flush()   
+}
+
+</code></pre>
+<ul>
+<li>最终共识，敲定区块： 
+由于 pow共识 一般是不需要最终共识的这个敲定阶段的， 因为他们有最长子链或者最重子链等证明算力的方式。 所以这里我们 <code>FinalizeBlock()</code>不用实现。 </li>
+</ul>
+<pre><code class="language-go">func (*Pow) FinalizeBlock(_ IBlock, _ *ChainEnv, _ *Land) error {
+	return nil
+}
+</code></pre>
+<p>到此为止，一个基于 sha256的 pow共识机制 便完成了。</p>
 
                     </main>
 
