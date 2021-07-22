@@ -3,7 +3,7 @@
     <head>
         <!-- Book generated using mdBook -->
         <meta charset="UTF-8">
-        <title>介绍 - yu docs</title>
+        <title>各组件配置 - yu docs</title>
         <!-- Custom HTML head -->
         
 
@@ -77,7 +77,7 @@
 
         <nav id="sidebar" class="sidebar" aria-label="Table of contents">
             <div class="sidebar-scrollbox">
-                <ol class="chapter"><li class="chapter-item expanded "><a href="1.介绍.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="2.快速开始.html"><strong aria-hidden="true">2.</strong> 快速开始</a></li><li class="chapter-item expanded "><a href="3.基本原理.html"><strong aria-hidden="true">3.</strong> 基本原理</a></li><li class="chapter-item expanded "><a href="4.0组件.html"><strong aria-hidden="true">4.</strong> 组件</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="4.1blockchain.html"><strong aria-hidden="true">4.1.</strong> blockchain</a></li><li class="chapter-item expanded "><a href="4.2blockbase.html"><strong aria-hidden="true">4.2.</strong> blockbase</a></li><li class="chapter-item expanded "><a href="4.3txpool.html"><strong aria-hidden="true">4.3.</strong> txpool</a></li><li class="chapter-item expanded "><a href="4.4tripod.html"><strong aria-hidden="true">4.4.</strong> tripod</a></li><li class="chapter-item expanded "><a href="4.5state.html"><strong aria-hidden="true">4.5.</strong> state</a></li></ol></li><li class="chapter-item expanded "><a href="5.0dev.html"><strong aria-hidden="true">5.</strong> 开发者手册</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.1配置文件.html"><strong aria-hidden="true">5.1.</strong> 配置文件</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.1.1节点配置.html"><strong aria-hidden="true">5.1.1.</strong> 节点配置</a></li><li class="chapter-item expanded "><a href="5.1.2各组件配置.html"><strong aria-hidden="true">5.1.2.</strong> 各组件配置</a></li><li class="chapter-item expanded "><a href="5.1.3P2P网络配置.html"><strong aria-hidden="true">5.1.3.</strong> P2P网络配置</a></li><li class="chapter-item expanded "><a href="5.1.4nodekepper配置.html"><strong aria-hidden="true">5.1.4.</strong> NodeKeeper配置（暂不用）</a></li></ol></li><li class="chapter-item expanded "><a href="5.2context与chainEnv.html"><strong aria-hidden="true">5.2.</strong> Context 与 chainEnv</a></li><li class="chapter-item expanded "><a href="5.3execution_and_query.html"><strong aria-hidden="true">5.3.</strong> Excutrion 与 Query</a></li><li class="chapter-item expanded "><a href="5.4区块周期.html"><strong aria-hidden="true">5.4.</strong> 区块周期</a></li><li class="chapter-item expanded "><a href="5.5建立区块链网络.html"><strong aria-hidden="true">5.5.</strong> 建立区块链网络</a></li></ol></li></ol>
+                <ol class="chapter"><li class="chapter-item expanded "><a href="1.介绍.html"><strong aria-hidden="true">1.</strong> 介绍</a></li><li class="chapter-item expanded "><a href="2.快速开始.html"><strong aria-hidden="true">2.</strong> 快速开始</a></li><li class="chapter-item expanded "><a href="3.基本原理.html"><strong aria-hidden="true">3.</strong> 基本原理</a></li><li class="chapter-item expanded "><a href="4.0组件.html"><strong aria-hidden="true">4.</strong> 组件</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="4.1blockchain.html"><strong aria-hidden="true">4.1.</strong> blockchain</a></li><li class="chapter-item expanded "><a href="4.2blockbase.html"><strong aria-hidden="true">4.2.</strong> blockbase</a></li><li class="chapter-item expanded "><a href="4.3txpool.html"><strong aria-hidden="true">4.3.</strong> txpool</a></li><li class="chapter-item expanded "><a href="4.4tripod.html"><strong aria-hidden="true">4.4.</strong> tripod</a></li><li class="chapter-item expanded "><a href="4.5state.html"><strong aria-hidden="true">4.5.</strong> state</a></li></ol></li><li class="chapter-item expanded "><a href="5.0dev.html"><strong aria-hidden="true">5.</strong> 开发者手册</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.1配置文件.html"><strong aria-hidden="true">5.1.</strong> 配置文件</a></li><li><ol class="section"><li class="chapter-item expanded "><a href="5.1.1节点配置.html"><strong aria-hidden="true">5.1.1.</strong> 节点配置</a></li><li class="chapter-item expanded "><a href="5.1.2各组件配置.html" class="active"><strong aria-hidden="true">5.1.2.</strong> 各组件配置</a></li><li class="chapter-item expanded "><a href="5.1.3P2P网络配置.html"><strong aria-hidden="true">5.1.3.</strong> P2P网络配置</a></li><li class="chapter-item expanded "><a href="5.1.4nodekepper配置.html"><strong aria-hidden="true">5.1.4.</strong> NodeKeeper配置（暂不用）</a></li></ol></li><li class="chapter-item expanded "><a href="5.2context与chainEnv.html"><strong aria-hidden="true">5.2.</strong> Context 与 chainEnv</a></li><li class="chapter-item expanded "><a href="5.3execution_and_query.html"><strong aria-hidden="true">5.3.</strong> Excutrion 与 Query</a></li><li class="chapter-item expanded "><a href="5.4区块周期.html"><strong aria-hidden="true">5.4.</strong> 区块周期</a></li><li class="chapter-item expanded "><a href="5.5建立区块链网络.html"><strong aria-hidden="true">5.5.</strong> 建立区块链网络</a></li></ol></li></ol>
             </div>
             <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
         </nav>
@@ -137,26 +137,77 @@
 
                 <div id="content" class="content">
                     <main>
-                        <h1 id="介绍"><a class="header" href="#介绍">介绍</a></h1>
-<p>yu(禹) 是一个用golang开发的 简单易用 且 高度可定制化的区块链框架。 现有的绝大多数区块链（公链与联盟链）都可以用 yu 来开发出来。</p>
-<h3 id="我为什么要开发-yu禹"><a class="header" href="#我为什么要开发-yu禹">我为什么要开发 yu(禹)</a></h3>
-<p>现如今的区块链框架，要么上手门槛很高，要么可定制化的程度很低，要么社区不活跃停止维护了。所以我才自己开发了
-这款区块链框架。 目的是为了让开发者们可以更简单快速、更深入的上手区块链开发的核心。</p>
-<h3 id="yu禹可以定制哪些功能"><a class="header" href="#yu禹可以定制哪些功能">yu(禹)可以定制哪些功能</a></h3>
+                        <h1 id="各组件配置"><a class="header" href="#各组件配置">各组件配置</a></h1>
+<h4 id="blockchain配置源码"><a class="header" href="#blockchain配置源码"><code>blockchain</code>配置源码:</a></h4>
+<pre><code class="language-go">type BlockchainConf struct {
+	ChainDB         SqlDbConf `toml:&quot;chain_db&quot;`
+	BlocksFromP2pDB SqlDbConf `toml:&quot;blocks_from_p2p_db&quot;`
+}
+</code></pre>
 <ul>
-<li>可使用多种编程语言开发（尚未完成）</li>
-<li>定制共识算法，包括但不仅限于pow、pos、poa、pbft等等</li>
-<li>自定义区块验证逻辑、交易验证逻辑、从交易池中打包交易的规则</li>
-<li>在区块生成周期的各个阶段插入自定义的操作，包括控制何时执行交易</li>
-<li>自定义链上交易(即Execution，在以太坊中称为交易) 和 查询(query)</li>
-<li>自定义链结构（包括分叉逻辑）和 交易池逻辑</li>
+<li>ChainDB: 用来存储区块链的sql数据库</li>
+<li>BlocksFromP2pDB: 用来缓存来自P2P网络的其他合法区块的sql数据库</li>
 </ul>
+<h4 id="blockbase配置源码"><a class="header" href="#blockbase配置源码"><code>blockbase</code>配置源码:</a></h4>
+<pre><code class="language-go">type BlockBaseConf struct {
+	BaseDB SqlDbConf `toml:&quot;base_db&quot;`
+}
+</code></pre>
+<ul>
+<li>BaseDB: 用来存储 <code>blockbase</code> 的sql数据库。</li>
+</ul>
+<h4 id="txpool配置源码"><a class="header" href="#txpool配置源码"><code>txpool</code>配置源码:</a></h4>
+<pre><code class="language-go">type TxpoolConf struct {
+	PoolSize   uint64    `toml:&quot;pool_size&quot;`
+	TxnMaxSize int       `toml:&quot;txn_max_size&quot;`
+	Timeout    int       `toml:&quot;timeout&quot;`
+}
+</code></pre>
+<ul>
+<li>PoolSize: 交易池池大小，如果超过该大小，则后续交易将不会被放进交易池</li>
+<li>TxnMaxSize：最大交易的数据量大小，如果一条交易超过该配置，则不会被放进交易池</li>
+<li>Timeout: 交易池超时时间，超过该时间则交易不会被放进交易池（目前该功能暂时未实现）</li>
+</ul>
+<h4 id="state配置源码"><a class="header" href="#state配置源码"><code>state</code>配置源码:</a></h4>
+<pre><code class="language-go">type StateConf struct {
+	KV StateKvConf `toml:&quot;kv&quot;`
+}
+</code></pre>
+<p>目前 <code>state</code>只支持<code>kvdb</code>这一种存储方式，未来还会开放更多存储形式 </p>
+<h3 id="配置示例"><a class="header" href="#配置示例">配置示例:</a></h3>
+<pre><code class="language-toml">[block_chain.chain_db]
+sql_db_type = &quot;sqlite&quot;
+dsn = &quot;chain.db&quot;
+
+[block_chain.blocks_from_p2p_db]
+sql_db_type = &quot;sqlite&quot;
+dsn = &quot;blocks_from_p2p.db&quot;
+
+[block_base.base_db]
+sql_db_type = &quot;sqlite&quot;
+dsn = &quot;blockbase.db&quot;
+
+[txpool]
+pool_size = 2048
+txn_max_size = 1024000
+
+[state.kv.index_db]
+kv_type = &quot;bolt&quot;
+path = &quot;./state_index.db&quot;
+
+[state.kv.node_base]
+kv_type = &quot;bolt&quot;
+path = &quot;./state_base.db&quot;
+</code></pre>
 
                     </main>
 
                     <nav class="nav-wrapper" aria-label="Page navigation">
                         <!-- Mobile navigation buttons -->
-                            <a rel="next" href="2.快速开始.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                            <a rel="prev" href="5.1.1节点配置.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                            <a rel="next" href="5.1.3P2P网络配置.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         <div style="clear: both"></div>
@@ -165,7 +216,10 @@
             </div>
 
             <nav class="nav-wide-wrapper" aria-label="Page navigation">
-                    <a rel="next" href="2.快速开始.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                    <a rel="prev" href="5.1.1节点配置.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a rel="next" href="5.1.3P2P网络配置.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
                         <i class="fa fa-angle-right"></i>
                     </a>
             </nav>
