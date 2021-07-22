@@ -142,9 +142,9 @@
 使用它们。</p>
 <p>定义如下:</p>
 <pre><code class="language-go">type (
-	Execution func(*context.Context, *chain_env.ChainEnv) error
+	Execution func(ctx *Context, currentBlock IBlock, env *ChainEnv) error
 	
-	Query func(*context.Context, *chain_env.ChainEnv, common.Hash) (respObj interface{}, err error)
+	Query func(ctx *Context, env *ChainEnv, blockHash Hash) (respObj interface{}, err error)
 )
 </code></pre>
 <ul>
@@ -152,6 +152,7 @@
 <p><code>Execution</code>在以太坊等其他区块链当中被称作<code>交易</code>， 说到底其实就是<code>一次对于链上状态的写操作</code>， 所以这样的操作会同步到全网。<br />
 当需要修改链上状态的时候， 需要调用 <code>chainEnv.KVDB</code>来进行状态修改。注意， <code>chainEnv.kvdb</code>内的<code>set</code>、<code>get</code>、 <code>delete</code>函数的第一个参数必须为当前 <code>tripod</code>
 指针， 比如 <a href="2.%E5%BF%AB%E9%80%9F%E5%BC%80%E5%A7%8B.html">快速开始</a>里的 <code>env.KVDB.Set(e, ..., ...)</code><br />
+<code>currentBlock</code>为当前交易所在的区块。<br />
 当需要发送 <code>event</code>到链外的时候，调用 <code>ctx.EmitEvent()</code>。</p>
 </li>
 <li>
@@ -204,6 +205,20 @@
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>

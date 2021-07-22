@@ -144,6 +144,7 @@
 <h4 id="开发一个链上的-execution-和-query"><a class="header" href="#开发一个链上的-execution-和-query">开发一个链上的 Execution 和 Query</a></h4>
 <pre><code class="language-go">import (
 	&quot;github.com/Lawliet-Chan/yu/apps/pow&quot;
+    . &quot;github.com/Lawliet-Chan/yu/blockchain&quot;
 	&quot;github.com/Lawliet-Chan/yu/chain_env&quot;
 	&quot;github.com/Lawliet-Chan/yu/common&quot;
 	&quot;github.com/Lawliet-Chan/yu/context&quot;
@@ -156,7 +157,7 @@ type Example struct {
 }
 
 // 此处定制开发一个 Execution
-func (e *Example) Exec(ctx *context.Context, env *chain_env.ChainEnv) error {
+func (e *Example) Exec(ctx *context.Context, _ IBlock, env *chain_env.ChainEnv) error {
 	caller := ctx.Caller
         // 将数据存入链上状态中。
 	env.KVDB.Set(e, caller.Bytes(), []byte(&quot;yu&quot;))
@@ -225,6 +226,20 @@ func main() {
 
         </div>
 
+        <!-- Livereload script (if served using the cli tool) -->
+        <script type="text/javascript">
+            var socket = new WebSocket("ws://localhost:3000/__livereload");
+            socket.onmessage = function (event) {
+                if (event.data === "reload") {
+                    socket.close();
+                    location.reload();
+                }
+            };
+
+            window.onbeforeunload = function() {
+                socket.close();
+            }
+        </script>
         <script type="text/javascript">
             window.playground_copyable = true;
         </script>
