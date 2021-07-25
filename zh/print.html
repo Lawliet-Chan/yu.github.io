@@ -814,13 +814,9 @@ INFO[2021-07-25 11:11:28] append block(9)
 <p>上图输出中 <code>fetch history blocks from (1) to (7)</code> 表示节点3启动时从节点1处获取到从高度1到7的历史区块</p>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="节点1配置"><a class="header" href="#节点1配置">节点1配置</a></h1>
 <pre><code class="language-toml">run_mode = 0
-
 http_port = &quot;7999&quot;
-
 ws_port = &quot;8999&quot;
-
 lei_limit = 50000
-
 timeout = 60
 
 p2p_listen_addrs = [&quot;/ip4/127.0.0.1/tcp/8887&quot;]
@@ -858,13 +854,9 @@ path = &quot;./state_base.db&quot;
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="节点2配置"><a class="header" href="#节点2配置">节点2配置</a></h1>
 <pre><code class="language-toml">run_mode = 0
-
 http_port = &quot;7998&quot;
-
 ws_port = &quot;8998&quot;
-
 lei_limit = 50000
-
 timeout = 60
 
 p2p_listen_addrs = [&quot;/ip4/127.0.0.1/tcp/8886&quot;]
@@ -893,7 +885,6 @@ dsn = &quot;blockbase.db&quot;
 pool_size = 2048
 txn_max_size = 1024000
 
-
 [state.kv.index_db]
 kv_type = &quot;bolt&quot;
 path = &quot;./state_index.db&quot;
@@ -904,16 +895,10 @@ path = &quot;./state_base.db&quot;
 </code></pre>
 <div style="break-before: page; page-break-before: always;"></div><h1 id="节点3配置"><a class="header" href="#节点3配置">节点3配置</a></h1>
 <pre><code class="language-toml">run_mode = 0
-
 http_port = &quot;3998&quot;
-
 ws_port = &quot;3998&quot;
-
 lei_limit = 50000
-
 timeout = 60
-
-num_of_bc_txns = 1
 
 p2p_listen_addrs = [&quot;/ip4/127.0.0.1/tcp/8885&quot;]
 # 该配置即 节点1 启动时 打印输出的 P2P地址
