@@ -145,14 +145,18 @@
 	// serve http port
 	HttpPort string `toml:&quot;http_port&quot;`
 	// serve websocket port
-	WsPort string `toml:&quot;ws_port&quot;
+	WsPort string `toml:&quot;ws_port&quot;`
+    // log out level:
+    // panic, fatal, error, warn, info, debug, trace
+    LogLevel string `toml:&quot;log_level&quot;`
     
-        LeiLimit uint64 `toml:&quot;lei_limit&quot;`
+    LeiLimit uint64 `toml:&quot;lei_limit&quot;`
 </code></pre>
 <ul>
 <li>Runmode: 为节点运行方式， 0为单节点形式运行，1为<code>master-worker</code>形式运行（<code>master-worker</code>形式暂不支持） </li>
 <li>HttpPort: http监听地址，服务于外部调用的端口配置。</li>
-<li>WsPort: websocket监听地址，服务于外部调用的端口配置。</li>
+<li>WsPort: websocket监听地址，服务于外部调用的端口配置。 </li>
+<li>LogLevel: 打印Log的等级，从上到下依次有 <code>panic</code>, <code>fatal</code>, <code>error</code>, <code>warn</code>, <code>info</code>, <code>debug</code>, <code>trace</code></li>
 <li>LeiLimit： 每个区块里可以被消耗的 <code>lei</code> 的上限</li>
 </ul>
 <h4 id="配置示例"><a class="header" href="#配置示例">配置示例：</a></h4>
